@@ -18,11 +18,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'  # Specify Ruby version 3.1 or higher
+          ruby-version: '2.7'  # Specify Ruby version 2.7
 
       - name: Install dependencies
         run: |
-          gem install bundler  # This will now work with Ruby 3.1
+          gem install bundler -v 2.4.22  # Install bundler version 2.4.22 for Ruby 2.7
           bundle install
 
       - name: Build Jekyll site
