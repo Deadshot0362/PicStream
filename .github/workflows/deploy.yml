@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or main, depending on your branch
+      - main
 
 jobs:
   deploy:
@@ -17,6 +17,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16'
+
+    - name: Navigate to the correct directory
+      run: cd PicStream-main  # Replace with the correct subfolder name if needed
 
     - name: Install dependencies
       run: |
