@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           gem install bundler -v 2.4.22  # Install bundler version 2.4.22 for Ruby 2.7
-          bundle install
+          bundle install  # This will now work as it finds the Gemfile in the root directory
 
       - name: Build Jekyll site
         run: |
