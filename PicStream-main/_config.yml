@@ -1,0 +1,13 @@
+# _config.yml
+
+# Site settings
+title: Your Site
+description: A simple site
+
+# Ensure the assets folder is included in the build
+include:
+  - assets
+
+# Other settings
+markdown: kramdown
+theme: jekyll-theme-primer
