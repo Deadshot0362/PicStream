@@ -9,5 +9,37 @@ include:
   - assets
 
 # Other settings
-markdown: kramdown
+markdown: kramdown# Jekyll configuration file
+
+# Path to the source files
+source: dist
+
+# Path to the destination folder (where the generated site will be placed)
+destination: dist/_site
+
+# Enabling the build of assets from SCSS
+sass:
+  load_paths:
+    - "dist/assets/css"
+
+# Exclude files or folders that you don't want to include in the build
+exclude:
+  - "dist/assets"  # Example: Exclude non-source files
+
+# Define the baseurl (if applicable, otherwise leave it empty)
+baseurl: ""
+
+# Other general settings (if needed)
+url: "https://your-website-url.com"
+title: "Your Site Title"
+description: "Your site description"
+theme: "jekyll-theme-primer"
+
+# Plugins that Jekyll will use
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-relative-links
+  - jekyll-github-metadata
+
 theme: jekyll-theme-primer
