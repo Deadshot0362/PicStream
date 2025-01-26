@@ -1,36 +1,30 @@
-# .github/workflows/deploy.yml
-
-name: Deploy Jekyll site to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Change if you're using a different branch
+      - main # Trigger workflow on pushes to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.7'  # Specify Ruby version 2.7
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
 
-      - name: Install dependencies
-        run: |
-          gem install bundler -v 2.4.22  # Install bundler version 2.4.22 for Ruby 2.7
-          bundle install  # This will now work as it finds the Gemfile in the root directory
+    - name: Install dependencies
+      run: npm install
 
-      - name: Build Jekyll site
-        run: |
-          bundle exec jekyll build --source src --destination dist
+    - name: Build project
+      run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          branch: gh-pages  # Adjust to the correct branch if necessary
+    - name: Deploy to GitHub Pages
+      run: npm run deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
