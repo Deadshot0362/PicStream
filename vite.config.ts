@@ -19,5 +19,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/', // Replace this with your actual repo name
+  base: '/PicStream/', // Updated to match your repository name
 }));

@@ -3,30 +3,30 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to the 'main' branch
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install  # Or any other build tools you're using
+        run: npm install
 
       - name: Build the site
-        run: npm run build  # Adjust if you're using Vite or another build tool
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_branch: gh-pages  # Use 'gh-pages' for GitHub Pages deployment
-          folder: dist  # Folder containing the built site (e.g., 'dist' for Vite)
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the secret in the environment variable
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
