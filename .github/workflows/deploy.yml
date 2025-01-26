@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # Change from 'main' to 'master'
+      - main  # Trigger deployment on push to the 'main' branch
 
 jobs:
   build:
@@ -21,10 +21,12 @@ jobs:
         run: npm install  # Or any other build tools you're using
 
       - name: Build the site
-        run: npm run build  # Or adjust if you're using Vite or another build tool
+        run: npm run build  # Adjust if you're using Vite or another build tool
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_branch: main  # Change from 'gh-pages' to 'master'
-          folder: dist  # Adjust to the folder where your build output goes
+          deploy_branch: gh-pages  # Use 'gh-pages' for GitHub Pages deployment
+          folder: dist  # Folder containing the built site (e.g., 'dist' for Vite)
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the secret in the environment variable
