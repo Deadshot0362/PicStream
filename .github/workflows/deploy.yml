@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - master  # Change from 'main' to 'master'
+      - main  # Change from 'main' to 'master'
 
 jobs:
   build:
@@ -26,5 +26,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_branch: master  # Change from 'gh-pages' to 'master'
+          deploy_branch: main  # Change from 'gh-pages' to 'master'
           folder: dist  # Adjust to the folder where your build output goes
